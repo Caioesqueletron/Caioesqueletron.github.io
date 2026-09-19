@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Caio Vinicius — Desenvolvedor Sênior | Java & Go</title>
+<meta name="description" content="Portfólio de Caio Vinicius, desenvolvedor sênior com experiência em Java, Go, React, PostgreSQL, Docker e AWS." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0D0F;
+    --surface: #121518;
+    --surface-2: #191D21;
+    --line: #262B30;
+    --ink: #F2F4F5;
+    --ink-soft: #9AA3AA;
+    --accent: #F5A524;
+    --accent-soft: #2A2113;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  a { color: inherit; }
+  section { padding: 100px 24px; }
+  .wrap { max-width: 1040px; margin: 0 auto; }
+
+  /* ---- nav ---- */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 24px;
+    background: rgba(11,13,15,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { max-width: 1040px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 15px; text-decoration: none; color: var(--ink); }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { font-size: 14px; color: var(--ink-soft); text-decoration: none; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    border: 1px solid var(--accent); color: var(--accent);
+    padding: 8px 16px; border-radius: 6px; font-size: 13.5px; text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--accent-soft); }
+  .menu-btn { display: none; background: none; border: none; color: var(--ink); font-size: 22px; cursor: pointer; }
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 12px 24px 18px;
+    background: rgba(11,13,15,0.98);
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-menu.open { display: flex; flex-direction: column; gap: 4px; }
+  .mobile-menu a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 12px 4px;
+    font-size: 15px;
+  }
+  .mobile-menu a:hover { color: var(--ink); }
+
+  /* ---- hero ---- */
+  .hero { padding: 120px 24px 90px; text-align: left; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent);
+    background: var(--accent-soft); padding: 6px 12px; border-radius: 999px; margin-bottom: 24px;
+  }
+  .hero-tag::before { content: '●'; font-size: 8px; }
+  .hero h1 {
+    font-size: 52px; line-height: 1.12; font-weight: 800; letter-spacing: -0.02em;
+    margin: 0 0 20px; max-width: 720px;
+  }
+  .hero h1 .accent { color: var(--accent); }
+  .hero p {
+    font-size: 17px; color: var(--ink-soft); max-width: 560px; margin: 0 0 36px; line-height: 1.65;
+  }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    padding: 12px 22px; border-radius: 7px; font-size: 14.5px; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary { background: var(--accent); color: #1A1305; }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-outline { border: 1px solid var(--line); color: var(--ink); }
+  .btn-outline:hover { background: var(--surface-2); }
+
+  /* ---- section headings ---- */
+  .section-head { margin-bottom: 44px; }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--accent); margin-bottom: 10px;
+  }
+  .section-head h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+
+  /* ---- sobre ---- */
+  #sobre { border-top: 1px solid var(--line); background: var(--surface); }
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
+  .about-text p { color: var(--ink-soft); font-size: 15.5px; line-height: 1.75; margin: 0 0 16px; }
+  .skills-title { font-size: 12.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
+    border: 1px solid var(--line); background: var(--surface-2);
+    padding: 6px 11px; border-radius: 6px; color: var(--ink-soft);
+  }
+
+  /* ---- projetos ---- */
+  .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .project-card {
+    border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2);
+    padding: 26px 24px; display: flex; flex-direction: column; gap: 14px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .project-icon {
+    width: 36px; height: 36px; border-radius: 8px; background: var(--accent-soft);
+    color: var(--accent); display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 15px;
+  }
+  .project-card h3 { font-size: 16px; margin: 0; }
+  .project-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; flex: 1; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .project-tags span {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-soft);
+    border: 1px solid var(--line); padding: 3px 8px; border-radius: 5px;
+  }
+  .project-links { display: flex; gap: 14px; margin-top: 4px; }
+  .project-links a { font-size: 13px; color: var(--accent); text-decoration: none; }
+  .project-links a:hover { text-decoration: underline; }
+
+  /* ---- experiência ---- */
+  #experiencia { border-top: 1px solid var(--line); background: var(--surface); }
+  .timeline { display: flex; flex-direction: column; }
+  .timeline-item {
+    display: grid; grid-template-columns: 160px 1fr; gap: 24px;
+    padding: 24px 0; border-bottom: 1px solid var(--line);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ink-soft); }
+  .timeline-content h3 { font-size: 16px; margin: 0 0 4px; }
+  .timeline-content .role { font-size: 13.5px; color: var(--accent); margin-bottom: 8px; }
+  .timeline-content p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+
+  /* ---- contato ---- */
+  #contato { text-align: center; }
+  #contato .section-head { text-align: center; }
+  #contato p { color: var(--ink-soft); max-width: 480px; margin: 0 auto 36px; font-size: 15.5px; }
+  .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 32px 24px; text-align: center;
+    font-size: 13px; color: var(--ink-soft); font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---- reveal on scroll ---- */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .menu-btn { display: block; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    .hero h1 { font-size: 36px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .project-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <!-- EDITE: suas iniciais / logo -->
+    <a href="#inicio" class="logo">caio<span>vinicius</span>.dev</a>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#contato" class="nav-cta">Contato</a>
+    </div>
+    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <span class="hero-tag mono">Disponível para novos projetos</span>
+    <!-- EDITE: seu nome e frase de efeito -->
+    <h1>Olá, eu sou <span class="accent">Caio Vinicius</span>.<br>Desenvolvedor Sênior.</h1>
+    <!-- EDITE: sua bio curta -->
+    <p>
+      Desenvolvedor sênior com experiência em Java e aplicações web de ponta a ponta.
+      Atualmente aprofundando minha atuação em Go, com foco em backend, sistemas
+      distribuídos, APIs, PostgreSQL, Docker e AWS.
+    </p>
+    <div class="hero-cta">
+      <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+      <!-- EDITE: link do seu CV -->
+      <a href="#contato" class="btn btn-outline">Entrar em contato</a>
+    </div>
+  </div>
+</header>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow mono">// sobre</div>
+      <h2>Um pouco sobre mim</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <!-- EDITE: sua bio completa -->
+        <p>
+          Sou desenvolvedor sênior com experiência em Java e desenvolvimento
+          full-stack, trabalhando da modelagem de dados e backend até a interface.
+          Tenho interesse especial por arquitetura, concorrência, sistemas
+          distribuídos, APIs de alta disponibilidade e engenharia de software.
+        </p>
+        <p>
+          Atualmente estou aprofundando minha transição para Go e construindo
+          projetos próprios para explorar conceitos de sistemas, concorrência,
+          persistência, mensageria e arquitetura de software em maior profundidade.
+        </p>
+      </div>
+      <div>
+        <div class="skills-title">Stack principal</div>
+        <!-- EDITE: suas tecnologias -->
+        <div class="skill-tags">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Spring Boot</span>
+          <span class="skill-tag">Go</span>
+          <span class="skill-tag">Gin</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">Git</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow mono">// projetos</div>
+      <h2>Coisas que eu construí</h2>
+    </div>
+    <div class="project-grid">
+      <div class="project-card reveal">
+        <div class="project-icon mono">01</div>
+        <h3>Bitcoin Blockchain Indexer</h3>
+        <p>
+          Indexador educacional orientado a produção, escrito em Go, que sincroniza
+          blocos do Bitcoin Core e persiste blocos, transações e estado UTXO em PostgreSQL.
+        </p>
+        <div class="project-tags">
+          <span>Go</span><span>PostgreSQL</span><span>gRPC</span><span>Bitcoin</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Caioesqueletron/btc-indexer" target="_blank" rel="noopener noreferrer">GitHub →</a>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-icon mono">02</div>
+        <h3>Mini API Gateway</h3>
+        <p>
+          Projeto de estudo em Go focado em conceitos de gateway: configuração,
+          autenticação JWT, limite de corpo, rate limiting, logs e extensibilidade.
+        </p>
+        <div class="project-tags">
+          <span>Go</span><span>HTTP</span><span>JWT</span><span>Concurrency</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Caioesqueletron" target="_blank" rel="noopener noreferrer">GitHub →</a>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-icon mono">03</div>
+        <h3>Ferramentas de Engenharia</h3>
+        <p>
+          Explorações em Go sobre armazenamento, protocolos, concorrência e
+          componentes inspirados em ferramentas de infraestrutura e sistemas distribuídos.
+        </p>
+        <div class="project-tags">
+          <span>Go</span><span>Systems</span><span>Docker</span><span>Distributed Systems</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Caioesqueletron" target="_blank" rel="noopener noreferrer">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow mono">// experiência</div>
+      <h2>Trajetória</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-date mono">Atual</div>
+        <div class="timeline-content">
+          <h3>Desenvolvimento de Software</h3>
+          <div class="role">Desenvolvedor Sênior — Java</div>
+          <p>
+            Experiência com desenvolvimento backend e full-stack, APIs, bancos de dados,
+            cloud e arquitetura de aplicações. Em evolução para uma atuação sênior também
+            no ecossistema Go.
+          </p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date mono">Foco atual</div>
+        <div class="timeline-content">
+          <h3>Go & Engenharia de Sistemas</h3>
+          <div class="role">Projetos de portfólio</div>
+          <p>
+            Construção de projetos em Go explorando concorrência, persistência transacional,
+            sistemas distribuídos, APIs, PostgreSQL, gRPC e fundamentos de infraestrutura.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow mono">// contato</div>
+      <h2>Vamos conversar?</h2>
+    </div>
+    <p class="reveal">
+      Tô sempre aberto a trocar uma ideia sobre projetos novos, oportunidades
+      ou só bater um papo sobre tecnologia.
+    </p>
+    <!-- EDITE: seus links reais -->
+    <div class="contact-links reveal">
+      <a href="https://github.com/Caioesqueletron" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Caio Vinicius — feito com café e algumas linhas de código
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Menu mobile
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.textContent = '☰';
+  }
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    menuBtn.textContent = isOpen ? '✕' : '☰';
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeMenu();
+  });
+</script>
+
+</body>
+</html>
