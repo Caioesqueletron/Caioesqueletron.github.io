@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Caio Vinicius — Desenvolvedor Sênior | Java & Go</title>
-<meta name="description" content="Portfólio de Caio Vinicius, desenvolvedor sênior com experiência em Java, Go, React, PostgreSQL, Docker e AWS." />
+<title>Caio Vinicius — Senior Full Stack Developer | Java, React & Go</title>
+<meta name="description" content="Portfolio of Caio Vinicius Fernandes Antonio, a senior full stack developer with 5+ years of experience in Java, Spring Boot, React, PostgreSQL, AWS and Go. AWS Certified Cloud Practitioner and Developer Associate." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -29,6 +29,7 @@
   }
   .mono { font-family: 'JetBrains Mono', monospace; }
   a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
   section { padding: 100px 24px; }
   .wrap { max-width: 1040px; margin: 0 auto; }
 
@@ -47,11 +48,11 @@
   .nav-links { display: flex; gap: 28px; align-items: center; }
   .nav-links a { font-size: 14px; color: var(--ink-soft); text-decoration: none; }
   .nav-links a:hover { color: var(--ink); }
-  .nav-cta {
+  .nav-links a.nav-cta {
     border: 1px solid var(--accent); color: var(--accent);
     padding: 8px 16px; border-radius: 6px; font-size: 13.5px; text-decoration: none;
   }
-  .nav-cta:hover { background: var(--accent-soft); }
+  .nav-links a.nav-cta:hover { background: var(--accent-soft); color: var(--accent); }
   .menu-btn { display: none; background: none; border: none; color: var(--ink); font-size: 22px; cursor: pointer; }
   .mobile-menu {
     display: none;
@@ -82,11 +83,11 @@
   .hero-tag::before { content: '●'; font-size: 8px; }
   .hero h1 {
     font-size: 52px; line-height: 1.12; font-weight: 800; letter-spacing: -0.02em;
-    margin: 0 0 20px; max-width: 720px;
+    margin: 0 0 20px; max-width: 760px;
   }
   .hero h1 .accent { color: var(--accent); }
   .hero p {
-    font-size: 17px; color: var(--ink-soft); max-width: 560px; margin: 0 0 36px; line-height: 1.65;
+    font-size: 17px; color: var(--ink-soft); max-width: 620px; margin: 0 0 36px; line-height: 1.65;
   }
   .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
   .btn {
@@ -105,31 +106,43 @@
   }
   .section-head h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.01em; margin: 0; }
 
-  /* ---- sobre ---- */
-  #sobre { border-top: 1px solid var(--line); background: var(--surface); }
+  /* ---- about ---- */
+  #about { border-top: 1px solid var(--line); background: var(--surface); }
   .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
   .about-text p { color: var(--ink-soft); font-size: 15.5px; line-height: 1.75; margin: 0 0 16px; }
   .skills-title { font-size: 12.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
+  .skills-title:not(:first-child) { margin-top: 26px; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .skill-tag {
     font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
     border: 1px solid var(--line); background: var(--surface-2);
     padding: 6px 11px; border-radius: 6px; color: var(--ink-soft);
   }
+  .skill-tag.main { color: var(--ink); border-color: #3A4148; }
+  .skill-tag.cert { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    margin-top: 56px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+    background: var(--surface-2);
+  }
+  .stat { padding: 22px 20px; border-right: 1px solid var(--line); }
+  .stat:last-child { border-right: none; }
+  .stat-value { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; color: var(--accent); }
+  .stat-label { font-size: 13px; color: var(--ink-soft); margin-top: 4px; line-height: 1.4; }
 
-  /* ---- projetos ---- */
+  /* ---- projects ---- */
+  .project-group { margin-bottom: 44px; }
+  .project-group:last-child { margin-bottom: 0; }
+  .group-title { font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+  .group-sub { font-size: 13.5px; color: var(--ink-soft); margin: 0 0 20px; }
   .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .project-card {
     border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2);
-    padding: 26px 24px; display: flex; flex-direction: column; gap: 14px;
+    padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 14px;
     transition: border-color 0.15s ease, transform 0.15s ease;
   }
   .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .project-icon {
-    width: 36px; height: 36px; border-radius: 8px; background: var(--accent-soft);
-    color: var(--accent); display: flex; align-items: center; justify-content: center;
-    font-family: 'JetBrains Mono', monospace; font-size: 15px;
-  }
+  .project-card.confidential { border-style: dashed; }
   .project-card h3 { font-size: 16px; margin: 0; }
   .project-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; flex: 1; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -140,9 +153,43 @@
   .project-links { display: flex; gap: 14px; margin-top: 4px; }
   .project-links a { font-size: 13px; color: var(--accent); text-decoration: none; }
   .project-links a:hover { text-decoration: underline; }
+  .project-icon {
+    width: 36px; height: 36px; border-radius: 8px; background: var(--accent-soft);
+    color: var(--accent); display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 15px;
+  }
 
-  /* ---- experiência ---- */
-  #experiencia { border-top: 1px solid var(--line); background: var(--surface); }
+  /* browser-window preview */
+  .preview {
+    display: block; text-decoration: none;
+    border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--bg);
+  }
+  .preview-bar {
+    display: flex; align-items: center; gap: 6px; padding: 8px 10px;
+    border-bottom: 1px solid var(--line); background: var(--surface);
+  }
+  .preview-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
+  .preview-url {
+    margin-left: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-soft);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .preview-body {
+    height: 84px; display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent);
+    background: linear-gradient(180deg, var(--accent-soft), transparent 130%);
+  }
+  a.preview:hover .preview-url { color: var(--ink); }
+  .redacted { flex-direction: column; align-items: flex-start; justify-content: center; gap: 8px; padding: 0 16px; background: none; }
+  .redacted i { display: block; height: 8px; border-radius: 2px; background: var(--line); }
+
+  .badge {
+    align-self: flex-start;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent);
+    border: 1px solid var(--accent); padding: 3px 8px; border-radius: 5px;
+  }
+
+  /* ---- experience ---- */
+  #experience { border-top: 1px solid var(--line); background: var(--surface); }
   .timeline { display: flex; flex-direction: column; }
   .timeline-item {
     display: grid; grid-template-columns: 160px 1fr; gap: 24px;
@@ -151,13 +198,39 @@
   .timeline-item:last-child { border-bottom: none; }
   .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ink-soft); }
   .timeline-content h3 { font-size: 16px; margin: 0 0 4px; }
-  .timeline-content .role { font-size: 13.5px; color: var(--accent); margin-bottom: 8px; }
+  .timeline-content .role { font-size: 13.5px; color: var(--accent); margin-bottom: 10px; }
   .timeline-content p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+  .timeline-content ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
+  .timeline-content li { margin-bottom: 6px; }
+  .timeline-content li::marker { color: var(--accent); }
+  .timeline-content .client { margin: 22px 0 10px; }
+  .timeline-content .client:first-of-type { margin-top: 4px; }
+  .timeline-content .client h4 { font-size: 14.5px; margin: 0; font-weight: 600; }
+  .timeline-content .client span { font-size: 12.5px; color: var(--ink-soft); font-family: 'JetBrains Mono', monospace; }
 
-  /* ---- contato ---- */
-  #contato { text-align: center; }
-  #contato .section-head { text-align: center; }
-  #contato p { color: var(--ink-soft); max-width: 480px; margin: 0 auto 36px; font-size: 15.5px; }
+  /* ---- resume ---- */
+  #resume { border-top: 1px solid var(--line); }
+  .cv-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
+  .cv-block { padding: 0 0 22px; margin-bottom: 22px; border-bottom: 1px solid var(--line); }
+  .cv-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cv-block h3 { font-size: 12.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 12px; font-weight: 500; }
+  .cv-item { margin-bottom: 14px; }
+  .cv-item:last-child { margin-bottom: 0; }
+  .cv-item .title { font-size: 16px; font-weight: 600; margin: 0 0 2px; }
+  .cv-item .meta { font-size: 14px; color: var(--ink-soft); margin: 0; }
+  .cv-block > .meta { font-size: 14px; color: var(--ink-soft); margin: 0; }
+  .cv-card {
+    border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); padding: 26px 24px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .cv-card h3 { font-size: 16px; margin: 0; }
+  .cv-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+  .cv-card .btn { justify-content: center; }
+
+  /* ---- contact ---- */
+  #contact { text-align: center; border-top: 1px solid var(--line); background: var(--surface); }
+  #contact .section-head { text-align: center; }
+  #contact p { color: var(--ink-soft); max-width: 480px; margin: 0 auto 36px; font-size: 15.5px; }
   .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
   footer {
@@ -168,16 +241,28 @@
   /* ---- reveal on scroll ---- */
   .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
   .reveal.in { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .project-card { transition: none; }
+    .project-card:hover { transform: none; }
+  }
 
+  @media (max-width: 900px) {
+    .project-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 760px) {
+    section { padding: 72px 24px; }
     .nav-links { display: none; }
     .menu-btn { display: block; }
-    .mobile-menu { display: none; }
-    .mobile-menu.open { display: flex; }
+    .hero { padding: 80px 24px 64px; }
     .hero h1 { font-size: 36px; }
-    .about-grid { grid-template-columns: 1fr; }
+    .about-grid, .cv-grid { grid-template-columns: 1fr; gap: 40px; }
     .project-grid { grid-template-columns: 1fr; }
     .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: none; }
+    .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   }
 </style>
 </head>
@@ -185,190 +270,410 @@
 
 <nav>
   <div class="nav-inner">
-    <!-- EDITE: suas iniciais / logo -->
-    <a href="#inicio" class="logo">caio<span>vinicius</span>.dev</a>
+    <a href="#home" class="logo">caio<span>vinicius</span>.dev</a>
     <div class="nav-links">
-      <a href="#sobre">Sobre</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#experiencia">Experiência</a>
-      <a href="#contato" class="nav-cta">Contato</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact" class="nav-cta">Contact</a>
     </div>
-    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
     <div id="mobile-menu" class="mobile-menu">
-      <a href="#sobre">Sobre</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#experiencia">Experiência</a>
-      <a href="#contato">Contato</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
 
-<header class="hero" id="inicio">
+<header class="hero" id="home">
   <div class="wrap">
-    <span class="hero-tag mono">Disponível para novos projetos</span>
-    <!-- EDITE: seu nome e frase de efeito -->
-    <h1>Olá, eu sou <span class="accent">Caio Vinicius</span>.<br>Desenvolvedor Sênior.</h1>
-    <!-- EDITE: sua bio curta -->
+    <span class="hero-tag mono">Open to remote opportunities</span>
+    <h1>Hi, I'm <span class="accent">Caio Vinicius</span>.<br>Senior Full Stack Developer.</h1>
     <p>
-      Desenvolvedor sênior com experiência em Java e aplicações web de ponta a ponta.
-      Atualmente aprofundando minha atuação em Go, com foco em backend, sistemas
-      distribuídos, APIs, PostgreSQL, Docker e AWS.
+      Full stack developer with 5+ years of experience building scalable backends with
+      Java and Spring Boot and web interfaces with React. I work with microservices,
+      PostgreSQL, AWS and Splunk, I'm AWS certified, and I'm going deeper into Go
+      through personal projects. Based in Poços de Caldas, Brazil.
     </p>
     <div class="hero-cta">
-      <a href="#projetos" class="btn btn-primary">Ver projetos</a>
-      <!-- EDITE: link do seu CV -->
-      <a href="#contato" class="btn btn-outline">Entrar em contato</a>
+      <a href="#projects" class="btn btn-primary">View projects</a>
+      <a href="Caio_Fernandes_CV.pdf" class="btn btn-outline" download>Download resume</a>
     </div>
   </div>
 </header>
 
-<section id="sobre">
+<section id="about">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-eyebrow mono">// sobre</div>
-      <h2>Um pouco sobre mim</h2>
+      <div class="section-eyebrow mono">// about</div>
+      <h2>A little about me</h2>
     </div>
     <div class="about-grid reveal">
       <div class="about-text">
-        <!-- EDITE: sua bio completa -->
         <p>
-          Sou desenvolvedor sênior com experiência em Java e desenvolvimento
-          full-stack, trabalhando da modelagem de dados e backend até a interface.
-          Tenho interesse especial por arquitetura, concorrência, sistemas
-          distribuídos, APIs de alta disponibilidade e engenharia de software.
+          I'm a Computer Engineering graduate and full stack software engineer, with a
+          strong focus on backend development and on scalable, high-performance systems
+          built with Java and Spring Boot. On the frontend I work with React. I apply
+          clean code, SOLID principles and software architecture patterns to deliver
+          robust, maintainable solutions.
         </p>
         <p>
-          Atualmente estou aprofundando minha transição para Go e construindo
-          projetos próprios para explorar conceitos de sistemas, concorrência,
-          persistência, mensageria e arquitetura de software em maior profundidade.
+          At Alelo, I worked on the Portal Minha Empresa (PME) team, building backend
+          solutions aimed at cost reduction, higher transaction volumes and a larger
+          average ticket size. Before that, on the chatbot team, I contributed to
+          performance and scalability by maintaining and refactoring critical microservices.
+        </p>
+        <p>
+          One of the most impactful projects I led was the IP Segregation initiative:
+          I redesigned order flows and technically led the segregation of legal processes
+          under a new product identifier, delivering the legal process segregation feature
+          in 2 weeks and in compliance with Central Bank regulations.
+        </p>
+        <p>
+          My last project at CI&amp;T was at AB InBev, where I worked on a large data
+          synchronization gateway, with Kafka, RabbitMQ, Redis and resilience patterns,
+          and helped create the contracts for onboarding new partners.
         </p>
       </div>
       <div>
-        <div class="skills-title">Stack principal</div>
-        <!-- EDITE: suas tecnologias -->
+        <div class="skills-title">AWS certifications</div>
         <div class="skill-tags">
-          <span class="skill-tag">Java</span>
-          <span class="skill-tag">Spring Boot</span>
-          <span class="skill-tag">Go</span>
-          <span class="skill-tag">Gin</span>
-          <span class="skill-tag">React</span>
-          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag cert">AWS Certified Cloud Practitioner</span>
+          <span class="skill-tag cert">AWS Certified Developer – Associate</span>
+        </div>
+        <div class="skills-title">Core stack</div>
+        <div class="skill-tags">
+          <span class="skill-tag main">Java</span>
+          <span class="skill-tag main">Spring Boot</span>
+          <span class="skill-tag main">React</span>
+          <span class="skill-tag main">PostgreSQL</span>
+          <span class="skill-tag main">AWS</span>
+          <span class="skill-tag main">Splunk</span>
+          <span class="skill-tag main">Go</span>
+        </div>
+        <div class="skills-title">Also work with</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Spring Batch</span>
+          <span class="skill-tag">Microservices</span>
           <span class="skill-tag">Docker</span>
-          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">OpenShift</span>
+          <span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">Oracle</span>
+          <span class="skill-tag">SQL Server</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">Redis</span>
+          <span class="skill-tag">Kafka</span>
+          <span class="skill-tag">RabbitMQ</span>
+          <span class="skill-tag">ActiveMQ</span>
+          <span class="skill-tag">TimescaleDB</span>
+          <span class="skill-tag">Azure Pipelines</span>
+          <span class="skill-tag">JUnit</span>
+          <span class="skill-tag">Mockito</span>
+          <span class="skill-tag">SonarQube</span>
+          <span class="skill-tag">Datadog</span>
           <span class="skill-tag">Git</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<section id="projetos">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="section-eyebrow mono">// projetos</div>
-      <h2>Coisas que eu construí</h2>
-    </div>
-    <div class="project-grid">
-      <div class="project-card reveal">
-        <div class="project-icon mono">01</div>
-        <h3>Bitcoin Blockchain Indexer</h3>
-        <p>
-          Indexador educacional orientado a produção, escrito em Go, que sincroniza
-          blocos do Bitcoin Core e persiste blocos, transações e estado UTXO em PostgreSQL.
-        </p>
-        <div class="project-tags">
-          <span>Go</span><span>PostgreSQL</span><span>gRPC</span><span>Bitcoin</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/Caioesqueletron/btc-indexer" target="_blank" rel="noopener noreferrer">GitHub →</a>
-        </div>
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="stat-value">5+</div>
+        <div class="stat-label">years of experience with Java and Spring</div>
       </div>
-      <div class="project-card reveal">
-        <div class="project-icon mono">02</div>
-        <h3>Mini API Gateway</h3>
-        <p>
-          Projeto de estudo em Go focado em conceitos de gateway: configuração,
-          autenticação JWT, limite de corpo, rate limiting, logs e extensibilidade.
-        </p>
-        <div class="project-tags">
-          <span>Go</span><span>HTTP</span><span>JWT</span><span>Concurrency</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/Caioesqueletron" target="_blank" rel="noopener noreferrer">GitHub →</a>
-        </div>
+      <div class="stat">
+        <div class="stat-value">500K+</div>
+        <div class="stat-label">users impacted on the cardholders' bot</div>
       </div>
-      <div class="project-card reveal">
-        <div class="project-icon mono">03</div>
-        <h3>Ferramentas de Engenharia</h3>
-        <p>
-          Explorações em Go sobre armazenamento, protocolos, concorrência e
-          componentes inspirados em ferramentas de infraestrutura e sistemas distribuídos.
-        </p>
-        <div class="project-tags">
-          <span>Go</span><span>Systems</span><span>Docker</span><span>Distributed Systems</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/Caioesqueletron" target="_blank" rel="noopener noreferrer">GitHub →</a>
-        </div>
+      <div class="stat">
+        <div class="stat-value">+30%</div>
+        <div class="stat-label">throughput after migrating the chatbot from Node.js to Java</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">−80%</div>
+        <div class="stat-label">edge-case failures with the product segregation logic</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="experiencia">
+<section id="projects">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-eyebrow mono">// experiência</div>
-      <h2>Trajetória</h2>
+      <div class="section-eyebrow mono">// projects</div>
+      <h2>Things I've built</h2>
+    </div>
+
+    <div class="project-group">
+      <h3 class="group-title reveal">Professional projects</h3>
+      <p class="group-sub reveal">Production systems I worked on as a software engineer.</p>
+      <div class="project-grid">
+
+        <div class="project-card reveal">
+          <a class="preview" href="https://loja.alelo.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Open the Alelo store">
+            <div class="preview-bar"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-url">loja.alelo.com.br</span></div>
+            <div class="preview-body">e-commerce</div>
+          </a>
+          <h3>Alelo E-commerce</h3>
+          <p>
+            Alelo's official online store. I took part in the backend development
+            with Java and Spring Boot.
+          </p>
+          <div class="project-tags">
+            <span>Java</span><span>Spring Boot</span><span>AWS</span>
+          </div>
+          <div class="project-links">
+            <a href="https://loja.alelo.com.br/" target="_blank" rel="noopener noreferrer">Visit site →</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <a class="preview" href="https://pme-web-front.alelo.com.br/content/pesim/multibeneficios" target="_blank" rel="noopener noreferrer" aria-label="Open the Portal Minha Empresa">
+            <div class="preview-bar"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-url">pme-web-front.alelo.com.br</span></div>
+            <div class="preview-body">PME portal</div>
+          </a>
+          <h3>Portal Minha Empresa (PME)</h3>
+          <p>
+            Alelo's portal for business customers. I worked on backend solutions aimed at
+            cutting costs, increasing transaction volume and growing the average ticket size.
+          </p>
+          <div class="project-tags">
+            <span>Java</span><span>Spring Boot</span><span>Microservices</span><span>AWS</span>
+          </div>
+          <div class="project-links">
+            <a href="https://pme-web-front.alelo.com.br/content/pesim/multibeneficios" target="_blank" rel="noopener noreferrer">Visit portal →</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="preview-bar"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-url">alelo</span></div>
+            <div class="preview-body">retention</div>
+          </div>
+          <h3>Alelo Retention</h3>
+          <p>
+            Backend features and legacy microservice refactors for Alelo's Retail and
+            Retention teams, with higher test coverage, fewer regressions and support
+            during production incidents.
+          </p>
+          <div class="project-tags">
+            <span>Java</span><span>Spring Boot</span><span>Microservices</span><span>JUnit</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="preview-bar"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-url">abinbev</span></div>
+            <div class="preview-body">data sync gateway</div>
+          </div>
+          <h3>AB InBev · Data Sync Gateway</h3>
+          <p>
+            Large data synchronization gateway integrating with hundreds of APIs across
+            dozens of microservices. I optimized and generalized it, moved ingestion to
+            Kafka and RabbitMQ, added Redis caching and resilience patterns, and helped
+            create the contracts for onboarding new partners.
+          </p>
+          <div class="project-tags">
+            <span>Java</span><span>Spring Boot</span><span>Kafka</span><span>RabbitMQ</span><span>Redis</span><span>TimescaleDB</span>
+          </div>
+        </div>
+
+        <div class="project-card confidential reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="preview-bar"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-url">🔒 confidential</span></div>
+            <div class="preview-body redacted"><i style="width:70%"></i><i style="width:90%"></i><i style="width:45%"></i></div>
+          </div>
+          <h3>Confidential project · Eldorado</h3>
+          <p>
+            My current project, covered by a non-disclosure agreement (NDA). I can't share
+            the client, product or technical details here, but I'm happy to talk about my
+            role in an interview.
+          </p>
+          <span class="badge">NDA</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="project-group">
+      <h3 class="group-title reveal">Personal projects in Go</h3>
+      <p class="group-sub reveal">Studies and experiments to go deeper into concurrency, persistence and distributed systems.</p>
+      <div class="project-grid">
+
+        <div class="project-card reveal">
+          <div class="project-icon mono">Go</div>
+          <h3>Bitcoin Blockchain Indexer</h3>
+          <p>
+            A production-oriented educational indexer written in Go that syncs blocks
+            from Bitcoin Core and persists blocks, transactions and UTXO state in PostgreSQL.
+          </p>
+          <div class="project-tags">
+            <span>Go</span><span>PostgreSQL</span><span>gRPC</span><span>Bitcoin</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Caioesqueletron/btc-indexer" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-icon mono">Go</div>
+          <h3>Mini API Gateway</h3>
+          <p>
+            A study project in Go focused on gateway concepts: configuration, JWT
+            authentication, body size limits, rate limiting, logging and extensibility.
+          </p>
+          <div class="project-tags">
+            <span>Go</span><span>HTTP</span><span>JWT</span><span>Concurrency</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Caioesqueletron" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-icon mono">Go</div>
+          <h3>Engineering Tools</h3>
+          <p>
+            Explorations in Go around storage, protocols, concurrency and components
+            inspired by infrastructure and distributed-systems tooling.
+          </p>
+          <div class="project-tags">
+            <span>Go</span><span>Systems</span><span>Docker</span><span>Distributed systems</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Caioesqueletron" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow mono">// experience</div>
+      <h2>Career path</h2>
     </div>
     <div class="timeline reveal">
+
       <div class="timeline-item">
-        <div class="timeline-date mono">Atual</div>
+        <div class="timeline-date mono">Present</div>
         <div class="timeline-content">
-          <h3>Desenvolvimento de Software</h3>
-          <div class="role">Desenvolvedor Sênior — Java</div>
+          <h3>Eldorado</h3>
+          <div class="role">Software Engineer</div>
           <p>
-            Experiência com desenvolvimento backend e full-stack, APIs, bancos de dados,
-            cloud e arquitetura de aplicações. Em evolução para uma atuação sênior também
-            no ecossistema Go.
+            Working on a confidential project under a non-disclosure agreement. Client,
+            product and technology details can't be shared.
           </p>
         </div>
       </div>
+
       <div class="timeline-item">
-        <div class="timeline-date mono">Foco atual</div>
+        <!-- CONFIRM: year of the CI&T exit (assumed May 2026) -->
+        <div class="timeline-date mono">May 2022 – May 2026</div>
         <div class="timeline-content">
-          <h3>Go & Engenharia de Sistemas</h3>
-          <div class="role">Projetos de portfólio</div>
-          <p>
-            Construção de projetos em Go explorando concorrência, persistência transacional,
-            sistemas distribuídos, APIs, PostgreSQL, gRPC e fundamentos de infraestrutura.
-          </p>
+          <h3>CI&amp;T</h3>
+          <div class="role">Software Engineer I → Software Engineer II</div>
+
+          <div class="client"><h4>AB InBev</h4> <span>last 3 months · data synchronization platform</span></div>
+          <ul>
+            <li>Maintained, optimized and generalized a large data synchronization gateway integrating with hundreds of APIs across dozens of microservices.</li>
+            <li>Remodeled and migrated data ingestion to messaging between Kafka logs and RabbitMQ queues, and tuned PostgreSQL queries with TimescaleDB.</li>
+            <li>Increased microservice resilience with the Circuit Breaker pattern and built custom caching on Redis Cluster (Lettuce and Redisson).</li>
+            <li>Ran experimental optimizations on the Java, Spring Boot and Tomcat stack, such as alternative thread pools and custom class warm-up.</li>
+            <li>Helped create the integration contracts used to onboard new partners, and prototyped partner-onboarding PoCs with generative AI tools.</li>
+            <li>Automated internal processes with Azure Pipelines and Jira Automation.</li>
+          </ul>
+
+          <div class="client"><h4>Alelo</h4> <span>chatbot, PME, Retail and Retention teams</span></div>
+          <ul>
+            <li>Migrated chatbot services from Node.js to Java 17 and refactored microservices, boosting throughput by 30%. Features on the cardholders' bot reached 500K+ users.</li>
+            <li>Built and maintained backend features that improved API performance by 20% and supported higher transaction volumes.</li>
+            <li>Co-designed and implemented the product segregation logic, cutting edge-case failures by 80% and ensuring regulatory compliance.</li>
+            <li>Led the delivery of the legal process segregation feature in 2 weeks, working across QA, frontend and backend teams.</li>
+            <li>On the Retail and Retention teams, refactored legacy microservices and raised test coverage, reducing regressions, and supported incident response.</li>
+            <li>Mentored a junior developer through code reviews and hands-on guidance.</li>
+          </ul>
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow mono">// resume</div>
+      <h2>Education, certifications and languages</h2>
+    </div>
+    <div class="cv-grid reveal">
+      <div>
+        <div class="cv-block">
+          <h3>Education</h3>
+          <div class="cv-item">
+            <p class="title">Bachelor of Computer Engineering</p>
+            <p class="meta">IFSULDEMINAS, Poços de Caldas, MG, Brazil · 2024 · grade 9.12</p>
+          </div>
+        </div>
+        <div class="cv-block">
+          <h3>Certifications</h3>
+          <div class="cv-item">
+            <p class="title">AWS Certified Cloud Practitioner</p>
+            <p class="meta">Amazon Web Services</p>
+          </div>
+          <div class="cv-item">
+            <p class="title">AWS Certified Developer – Associate</p>
+            <p class="meta">Amazon Web Services</p>
+          </div>
+          <div class="cv-item">
+            <p class="title">FCE B2</p>
+            <p class="meta">First Certificate in English</p>
+          </div>
+        </div>
+        <div class="cv-block">
+          <h3>Languages</h3>
+          <p class="meta">Portuguese (native) · English (advanced) · Spanish (basic/intermediate)</p>
+        </div>
+      </div>
+      <div class="cv-card">
+        <h3>Full resume</h3>
+        <p>
+          Detailed experience, results and stack in a one-page PDF.
+        </p>
+        <a href="Caio_Fernandes_CV.pdf" class="btn btn-primary" download>Download resume (PDF)</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contato">
+<section id="contact">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-eyebrow mono">// contato</div>
-      <h2>Vamos conversar?</h2>
+      <div class="section-eyebrow mono">// contact</div>
+      <h2>Let's talk?</h2>
     </div>
     <p class="reveal">
-      Tô sempre aberto a trocar uma ideia sobre projetos novos, oportunidades
-      ou só bater um papo sobre tecnologia.
+      I'm always up for a chat about new projects, opportunities,
+      or just talking tech.
     </p>
-    <!-- EDITE: seus links reais -->
     <div class="contact-links reveal">
-      <a href="https://github.com/Caioesqueletron" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub</a>
-      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn</a>
+      <a href="mailto:caioviniciusfernandesantonio@gmail.com" class="btn btn-primary">Email</a>
+      <a href="https://www.linkedin.com/in/caio-fernandes" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn</a>
+      <a href="https://github.com/Caioesqueletron" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub</a>
     </div>
   </div>
 </section>
 
 <footer>
-  © <span id="year"></span> Caio Vinicius — feito com café e algumas linhas de código
+  © <span id="year"></span> Caio Vinicius Fernandes Antonio — made with coffee and a few lines of code
 </footer>
 
 <script>
@@ -385,7 +690,7 @@
   }, { threshold: 0.15 });
   revealEls.forEach(el => observer.observe(el));
 
-  // Menu mobile
+  // Mobile menu
   const menuBtn = document.querySelector('.menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
 
